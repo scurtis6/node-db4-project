@@ -1,7 +1,7 @@
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('recipe_steps').del()
+  return knex('recipe_steps').truncate()
     .then(function () {
       // Inserts seed entries
       return knex('recipe_steps').insert([

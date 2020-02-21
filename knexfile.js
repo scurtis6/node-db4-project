@@ -14,7 +14,12 @@ module.exports = {
     seeds: {
       directory: './data/seeds'
     },
-  },
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run("PRAGMA foreign_keys = ON", done); //turns on the FK enforcement
+      }
+    },
+}
 
   // staging: {
   //   client: 'postgresql',

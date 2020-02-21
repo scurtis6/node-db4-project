@@ -34,6 +34,8 @@ exports.up = function(knex) {
   .createTable('steps', tbl => {
       tbl.increments()
 
+      tbl.integer('stepNumber')
+
       tbl.string('instruction')
       .notNullable();
   })
