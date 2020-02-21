@@ -3,7 +3,7 @@ const db = require('../data/db-config')
 module.exports = {
     getRecipes,
     getShoppingList,
-    getInstructions
+    getInstructions,
 }
 
 // getRecipes(): should return a list of all recipes in the database.
@@ -20,10 +20,10 @@ function getShoppingList(id) {
     where r.id = id */
 
     return db('recipe_ingredients as ri')
-        .select('r.name as recipe_name', 'i.name as ingredient', 'i.quantity')
-        .innerJoin('recipes as r', 'ri.recipe_id','r.id')
-        .innerJoin('ingredients as i', 'ri.ingredient_id', 'i.id')
-        .where('r.id', id)
+    .select('r.name as recipe_name', 'i.name as ingredient', 'i.quantity')
+    .innerJoin('recipes as r', 'ri.recipe_id','r.id')
+    .innerJoin('ingredients as i', 'ri.ingredient_id', 'i.id')
+    .where('r.id', id)
 }
 
 // getInstructions(recipe_id): should return a list of step by step instructions for preparing a recipe
@@ -38,4 +38,5 @@ function getInstructions(id) {
     .innerJoin('recipes as r', 'rs.recipe_id', 'r.id')
     .innerJoin('steps as s', 's.id', 'rs.step_id')
     .where('r.id', id)
+    .orderBy('s.stepNumber')
 }

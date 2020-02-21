@@ -43,6 +43,4 @@ router.get('/:id/instructions', async (req, res) => {
     }
 })
 
-// GET /api/ingredients/:id/recipes: all recipes in the system that utilize a single ingredient
-
 module.exports = router;

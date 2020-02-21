@@ -2,11 +2,13 @@ const express = require('express');
 const helmet = require('helmet');
 
 const RecipeRouter = require('./routers/recipe-router')
+const IngredientRouter = require('./routers/ingredient-router')
 const server = express();
 
 server.use(helmet());
 server.use(express.json());
 server.use('/api/recipes', RecipeRouter);
+server.use('/api/ingredients', IngredientRouter)
 
 module.exports = server
 
